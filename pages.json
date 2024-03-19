@@ -4,7 +4,7 @@
       "path": "pages/home/home",
       "style": {
         "navigationBarTitleText": "首页",
-        "enablePullDownRefresh": true,
+        "enablePullDownRefresh": false,
         "backgroundColor": "#f4f3f8"
       }
     },
@@ -28,6 +28,28 @@
         "navigationBarTitleText": "个人中心",
         "enablePullDownRefresh": false
       }
+    }
+  ],
+  "subPackages": [
+    {
+      "root": "subpkg",
+      "pages": [
+        {
+          "path": "goods_detail/goods_detail",
+          "style": {
+            "navigationBarTitleText": "商品详情页",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+        	"path" : "goods_list/goods_list",
+        	"style" : 
+        	{
+        		"navigationBarTitleText" : "商品列表",
+        		"enablePullDownRefresh" : false
+        	}
+        }
+      ]
     }
   ],
   "globalStyle": {
