@@ -109,8 +109,8 @@
 		},
 		data() {
 			return {
-				show: false,
-				showSync: false,
+				show: true,
+				showSync: true,
 				searchVal: ''
 			}
 		},
@@ -235,7 +235,7 @@
 		flex-direction: row;
 		position: relative;
 		padding: 10px;
-		// background-color: #fff;
+		background-color: #d7c2f9;
 	}
 
 	.uni-searchbar__box {
@@ -251,6 +251,7 @@
 		align-items: center;
 		height: $uni-searchbar-height;
 		padding: 5px 8px 5px 0px;
+		
 	}
 
 	.uni-searchbar__box-icon-search {
