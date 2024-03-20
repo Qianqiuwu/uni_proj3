@@ -64,12 +64,9 @@ export default {
     activechange(i) {
       this.active = i;
       this.cateList2 = this.cateList[i].children;
-      console.log(this.scrollTop);
       this.scrollTop = this.scrollTop == 0 ? 1 : 0;
     },
-    scroll(e) {
-      console.log(e.detail.scrollTop);
-    },
+    scroll(e) {},
     gotoGoodsList(item) {
       uni.navigateTo({
         url: "/subpkg/goods_list/goods_list?cid=" + item.cat_id,
