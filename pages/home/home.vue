@@ -1,8 +1,8 @@
 <template>
   <view>
-	  <view class="search-box">
-	  	 <my-search @click.native="gotoSearch"></my-search>
-	  </view>
+    <view class="search-box">
+      <my-search @click.native="gotoSearch"></my-search>
+    </view>
     <!-- 轮播图区域 -->
     <swiper
       :indicator-dots="true"
@@ -38,7 +38,7 @@
         <!-- 楼层图片区域 -->
         <view class="floor-img-box">
           <!-- 左侧大图片的盒子 -->
-          <navigator class="left-img-box" :url='item.product_list[0].url'>
+          <navigator class="left-img-box" :url="item.product_list[0].url">
             <image
               :src="item.product_list[0].image_src"
               :style="{ width: item.product_list[0].image_width + 'rpx' }"
@@ -47,7 +47,7 @@
           <!-- 右侧 4 个小图片的盒子 -->
           <view class="right-img-box">
             <navigator
-			:url='item2.url'
+              :url="item2.url"
               class="right-img-item"
               v-for="(item2, i2) in item.product_list"
               :key="i2"
@@ -65,7 +65,9 @@
 </template>
 
 <script>
+import badgeMix from "@/mixins/tabbar-badge.js";
 export default {
+  mixins: [badgeMix],
   data() {
     return {
       // 轮播图
@@ -115,12 +117,12 @@ export default {
       });
       this.floorList = res.message;
     },
-	   // 跳转到分包中的搜索页面
-	   gotoSearch() {
-	     uni.navigateTo({
-	       url: '/subpkg/search/search'
-	     })
-	   }
+    // 跳转到分包中的搜索页面
+    gotoSearch() {
+      uni.navigateTo({
+        url: "/subpkg/search/search",
+      });
+    },
   },
 };
 </script>

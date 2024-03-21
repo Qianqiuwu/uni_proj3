@@ -1,22 +1,16 @@
 <template>
-	<view>
-		
-	</view>
+  <view></view>
 </template>
 
 <script>
-	export default {
-		data() {
-			return {
-				
-			}
-		},
-		methods: {
-			
-		}
-	}
+import badgeMix from "@/mixins/tabbar-badge.js";
+export default {
+  mixins: [badgeMix],
+  data() {
+    return {};
+  },
+  methods: {},
+};
 </script>
 
-<style>
-
-</style>
+<style></style>
