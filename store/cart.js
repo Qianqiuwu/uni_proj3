@@ -22,12 +22,22 @@ export default {
       uni.setStorageSync("cart", JSON.stringify(state.cart));
     },
     updateGoodsState(state, goods) {
-      console.log(goods);
       const findResult = state.cart.find((x) => x.goods_id === goods.goods_id);
       if (findResult) {
         findResult.goods_state = goods.goods_state;
         uni.setStorageSync("cart", JSON.stringify(state.cart));
       }
+    },
+    updateGoodsCount(state, goods) {
+      const findResult = state.cart.find((x) => x.goods_id === goods.goods_id);
+      if (findResult) {
+        findResult.goods_count = goods.goods_count;
+        uni.setStorageSync("cart", JSON.stringify(state.cart));
+      }
+    },
+    removeGoodsById(state, goods_id) {
+      state.cart = state.cart.filter((x) => x.goods_id != goods_id);
+      uni.setStorageSync("cart", JSON.stringify(state.cart));
     },
   },
 

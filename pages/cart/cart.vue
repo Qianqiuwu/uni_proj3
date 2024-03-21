@@ -1,5 +1,6 @@
 <template>
   <view>
+    <my-address></my-address>
     <!-- 购物车商品列表的标题区域 -->
     <view class="cart-title">
       <!-- 左侧的图标 -->
@@ -7,14 +8,20 @@
       <!-- 描述文本 -->
       <text class="cart-title-text">购物车</text>
     </view>
-    <block v-for="(goods, i) in cart" :key="i">
-      <my-goods
-        :goods="goods"
-        :disables="true"
-        :showNum="true"
-        @radio-change="radioChangeHandler"
-        @num-change="numChangeHandler"></my-goods>
-    </block>
+    <uni-swipe-action>
+      <block v-for="(goods, i) in cart" :key="i">
+        <uni-swipe-action-item
+          :right-options="options"
+          @click="swipeActionClickHandler(goods)">
+          <my-goods
+            :goods="goods"
+            :disables="true"
+            :showNum="true"
+            @radio-change="radioChangeHandler"
+            @num-change="numChangeHandler"></my-goods>
+        </uni-swipe-action-item>
+      </block>
+    </uni-swipe-action>
   </view>
 </template>
 
@@ -24,15 +31,31 @@ import { mapState, mapMutations } from "vuex";
 export default {
   mixins: [badgeMix],
   data() {
-    return {};
+    return {
+      options: [
+        {
+          text: "删除", // 显示的文本内容
+          style: {
+            backgroundColor: "#feb103", // 按钮的背景颜色
+          },
+        },
+      ],
+    };
   },
   methods: {
-    ...mapMutations("m_cart", ["updateGoodsState"]),
+    ...mapMutations("m_cart", [
+      "updateGoodsState",
+      "updateGoodsCount",
+      "removeGoodsById",
+    ]),
     radioChangeHandler(e) {
       this.updateGoodsState(e);
     },
     numChangeHandler(e) {
-      console.log(e);
+      this.updateGoodsCount(e);
+    },
+    swipeActionClickHandler(goods) {
+      this.removeGoodsById(goods.goods_id);
     },
   },
   computed: {
