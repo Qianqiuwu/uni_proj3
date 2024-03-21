@@ -173,7 +173,7 @@ swiper {
   padding-right: 0;
 
   .price {
-    color: #c00000;
+    color: #feb103;
     font-size: 18px;
     margin: 10px 0;
   }

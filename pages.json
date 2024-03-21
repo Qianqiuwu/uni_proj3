@@ -104,7 +104,7 @@
     "list": [
       {
         "name": "", //模式名称
-        "path": "subpkg/search/search", //启动页面，必选
+        "path": "pages/cart/cart", //启动页面，必选
         "query": "" //启动参数，在页面的onLoad函数里面得到
       }
     ]

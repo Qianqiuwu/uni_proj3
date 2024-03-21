@@ -21,6 +21,14 @@ export default {
       }
       uni.setStorageSync("cart", JSON.stringify(state.cart));
     },
+    updateGoodsState(state, goods) {
+      console.log(goods);
+      const findResult = state.cart.find((x) => x.goods_id === goods.goods_id);
+      if (findResult) {
+        findResult.goods_state = goods.goods_state;
+        uni.setStorageSync("cart", JSON.stringify(state.cart));
+      }
+    },
   },
 
   // 模块的 getters 属性
