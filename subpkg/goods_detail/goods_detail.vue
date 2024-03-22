@@ -109,7 +109,6 @@ export default {
     },
     /* 底部事件 */
     onClick(e) {
-      console.log(e.content.text);
       if (e.content.text == "购物车") {
         uni.switchTab({
           url: "/pages/cart/cart",
@@ -117,7 +116,6 @@ export default {
       }
     },
     buttonClick(e) {
-      console.log(e.content.text);
       if (e.content.text == "加入购物车") {
         this.options[1].info += 1;
         const goods = {
@@ -130,7 +128,6 @@ export default {
         };
         this.addToCart(goods);
       }
-      console.log(this.options.find((x) => x.text == "购物车"));
     },
   },
   computed: {
