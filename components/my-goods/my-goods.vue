@@ -74,9 +74,7 @@ export default {
       });
     },
   },
-  onLoad() {
-    console.log(this.goods);
-  },
+  onLoad() {},
 };
 </script>
 
