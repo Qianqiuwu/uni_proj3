@@ -65,10 +65,16 @@
       },
       "scope.address": {
         "desc": "你的通信地址将用于小程序"
+      },
+      "scope.userInfo": {
+        "desc": "用户信息"
       }
     },
     "requiredPrivateInfos": ["chooseAddress"],
-    "lazyCodeLoading": "requiredComponents"
+    "lazyCodeLoading": "requiredComponents",
+    "secureNetwork": {
+      "enable": true
+    }
   },
   "vueVersion": "2",
   "locale": "zh-Hans"

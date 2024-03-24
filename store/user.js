@@ -6,6 +6,8 @@ export default {
   state: () => ({
     // 收货地址
     address: JSON.parse(uni.getStorageSync("address") || "{}"),
+    token: uni.getStorageSync("token") || "",
+    userinfo: JSON.parse(uni.getStorageSync("userinfo") || "{}"),
   }),
 
   // 方法
@@ -14,6 +16,17 @@ export default {
     updateAddress(state, address) {
       state.address = address;
       uni.setStorageSync("address", JSON.stringify(state.address));
+    },
+    updateUserInfo(state, userinfo) {
+      console.log(1, userinfo);
+      state.userinfo = userinfo;
+      // 通过 this.commit() 方法，调用 m_user 模块下的 saveUserInfoToStorage 方法，将 userinfo 对象持久化存储到本地
+      uni.setStorageSync("userinfo", JSON.stringify(state.userinfo));
+    },
+    updateToken(state, token) {
+      state.token = token;
+      // 通过 this.commit() 方法，调用 m_user 模块下的 saveTokenToStorage 方法，将 token 字符串持久化存储到本地
+      uni.setStorageSync("token", state.token);
     },
   },
 
