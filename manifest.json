@@ -1,5 +1,5 @@
 {
-    "name" : "uni_proj3",
+    "name" : "清欢渡血商城小程序",
     "appid" : "__UNI__53B25DD",
     "description" : "",
     "versionName" : "1.0.0",
@@ -67,10 +67,9 @@
     "quickapp" : {},
     /* 快应用特有相关 */
     "mp-weixin" : {
-        /* 小程序特有相关 */
         "appid" : "wx9907d90ab724d379",
         "setting" : {
-            "urlCheck" : true,
+            "urlCheck" : false,
             "checkSiteMap" : false,
             "es6" : true,
             "postcss" : true,
@@ -91,7 +90,7 @@
         "requiredPrivateInfos" : [ "chooseAddress" ],
         "lazyCodeLoading" : "requiredComponents",
         "secureNetwork" : {
-            "enable" : true
+            "enable" : false
         }
     },
     "vueVersion" : "2",
