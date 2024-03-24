@@ -12,13 +12,17 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapMutations, mapState } from "vuex";
 export default {
   data() {
     return {};
   },
   methods: {
-    ...mapMutations("m_user", ["updateUserInfo", "updateToken"]),
+    ...mapMutations("m_user", [
+      "updateUserInfo",
+      "updateToken",
+      "updateRedirectInfo",
+    ]),
     // 获取微信用户的基本信息
     async getUserInfo() {
       // await this.setting();
@@ -28,7 +32,6 @@ export default {
           success: (res) => {
             this.updateUserInfo(res.userInfo);
             this.getToken(res);
-            console.log(res);
             return res;
           },
         });
@@ -52,20 +55,32 @@ export default {
         "/api/public/v1/users/wxlogin",
         query
       );
-      console.log(loginResult);
       // if (loginResult.meta.status !== 200) return uni.$showMsg("登录失败！");
       uni.$showMsg("登录成功");
+      this.navigateBack();
       this.updateToken(
         "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjIzLCJpYXQiOjE1NjQ3MzAwNzksImV4cCI6MTAwMTU2NDczMDA3OH0.YPt-XeLnjV-_1ITaXGY2FhxmCe4NvXuRnRB8OMCfnPo"
       );
     },
     setting() {
       uni.openSetting({
-        success(res) {
-          console.log(res);
-        },
+        success(res) {},
       });
     },
+    navigateBack() {
+      if (this.redirectInfo && this.redirectInfo.openType == "switchTab") {
+        uni.switchTab({
+          url: this.redirectInfo.from,
+          complete: () => {
+            this.redirectInfo = null;
+          },
+        });
+      }
+    },
+  },
+  computed: {
+    // 调用 mapState 辅助方法，把 m_user 模块中的数据映射到当前用组件中使用
+    ...mapState("m_user", ["redirectInfo"]),
   },
 };
 </script>

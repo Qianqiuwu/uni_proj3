@@ -8,17 +8,21 @@ export default {
     address: JSON.parse(uni.getStorageSync("address") || "{}"),
     token: uni.getStorageSync("token") || "",
     userinfo: JSON.parse(uni.getStorageSync("userinfo") || "{}"),
+    // { openType, from }
+    redirectInfo: null,
   }),
 
   // 方法
   mutations: {
+    updateRedirectInfo(state, info) {
+      state.redirectInfo = info;
+    },
     // 更新收货地址
     updateAddress(state, address) {
       state.address = address;
       uni.setStorageSync("address", JSON.stringify(state.address));
     },
     updateUserInfo(state, userinfo) {
-      console.log(1, userinfo);
       state.userinfo = userinfo;
       // 通过 this.commit() 方法，调用 m_user 模块下的 saveUserInfoToStorage 方法，将 userinfo 对象持久化存储到本地
       uni.setStorageSync("userinfo", JSON.stringify(state.userinfo));
